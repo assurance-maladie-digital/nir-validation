@@ -1,0 +1,38 @@
+{
+    "name": "cnamts/nir",
+    "description": "Le composant NIR fournit une validation des valeurs selon les données d'identification française",
+    "type": "project",
+    "license": "proprietary",
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^7.3||^8.0",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "symfony/validator": "^4.4||^5.3"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest",
+        "phpspec/phpspec": "^7.0",
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "phpmd/phpmd": "^2.10",
+        "phpstan/phpstan": "^0.12.91",
+        "vimeo/psalm": "^4.8"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Cnamts\\Nir\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Spec\\": "tests/Spec"
+        }
+    }
+}

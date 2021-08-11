@@ -1,0 +1,5 @@
+###> cnamts/nir-validation ###
+/vendor/
+/composer.lock
+/.php-cs-fixer.cache
+###< cnamts/nir-validation ###

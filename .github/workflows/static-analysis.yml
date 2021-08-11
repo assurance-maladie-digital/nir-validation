@@ -1,0 +1,53 @@
+name: Static analysis
+
+on:
+  push:
+  pull_request:
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          coverage: "none"
+          ini-values: date.timezone=Europe/Paris,memory_limit=-1,default_socket_timeout=10,session.gc_probability=0,apc.enable_cli=1
+          php-version: "8.0"
+          extensions: "${{ env.extensions }}"
+          tools: flex
+
+      - name: Validate composer.json
+        run: composer validate --strict
+
+      - name: Install dependencies
+        run: |
+          composer install
+
+      - name: Run psalm
+        run: |
+          php vendor/bin/psalm --output-format=github --no-progress
+
+      - name: Run PHP Coding Standards Fixer
+        run: |
+          php vendor/bin/php-cs-fixer fix --diff --dry-run -v
+
+      - name: Run PHPStan
+        run: |
+          php vendor/bin/phpstan analyze src
+
+      - name: Run phpmd
+        run: |
+          php vendor/bin/phpmd src xml pmd-ruleset.xml
