@@ -1,0 +1,40 @@
+{
+    "name": "assurance-maladie/nir-validation",
+    "description": "Ce composant fournit une validation des valeurs selon les données d'identification française",
+    "type": "project",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^7.3||^8.0",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "symfony/validator": "^4.4||^5.3"
+    },
+    "require-dev": {
+        "assurance-maladie/qualytou": "^2.0",
+        "phpspec/phpspec": "^7.1",
+        "roave/security-advisories": "dev-latest"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true,
+        "allow-plugins": {
+            "phpstan/extension-installer": true,
+            "phpro/grumphp": true,
+            "assurance-maladie/qualytou": true
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Cnamts\\Nir\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Spec\\": "tests/Spec"
+        }
+    }
+}

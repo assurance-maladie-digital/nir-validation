@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<psalm
+    errorLevel="1"
+    allowStringToStandInForClass="true"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+>
+    <projectFiles>
+        <directory name="src" />
+        <ignoreFiles>
+            <directory name="vendor" />
+            <directory name="tests" />
+        </ignoreFiles>
+    </projectFiles>
+
+    <issueHandlers>
+        <NonInvariantDocblockPropertyType>
+            <errorLevel type="suppress">
+                <file name="src/Constraints/Mig.php" />
+                <file name="src/Constraints/Nir.php" />
+                <file name="src/Constraints/Nnp.php" />
+            </errorLevel>
+        </NonInvariantDocblockPropertyType>
+        <PropertyNotSetInConstructor>
+            <errorLevel type="suppress">
+                <file name="src/Constraints/Mig.php" />
+                <file name="src/Constraints/Nir.php" />
+                <file name="src/Constraints/Nnp.php" />
+            </errorLevel>
+        </PropertyNotSetInConstructor>
+        <MixedArgumentTypeCoercion>
+            <errorLevel type="suppress">
+                <file name="src/Constraints/Nir.php" />
+            </errorLevel>
+        </MixedArgumentTypeCoercion>
+        <MissingParamType>
+            <errorLevel type="suppress">
+                <file name="src/Constraints/Nir.php" />
+            </errorLevel>
+        </MissingParamType>
+    </issueHandlers>
+</psalm>
