@@ -15,7 +15,7 @@
         "phpspec/phpspec": "^7.0",
         "friendsofphp/php-cs-fixer": "^3.0",
         "phpmd/phpmd": "^2.10",
-        "phpstan/phpstan": "^0.12.91",
+        "phpstan/phpstan": "^1.0.0",
         "vimeo/psalm": "^4.8"
     },
     "config": {
