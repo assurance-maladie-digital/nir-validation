@@ -11,6 +11,7 @@
         "php": "^7.3||^8.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "fakerphp/faker": "^1.20",
         "symfony/validator": "^4.4||^5.3"
     },
     "require-dev": {
