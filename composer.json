@@ -4,6 +4,9 @@
     "type": "project",
     "license": "MIT",
     "minimum-stability": "stable",
+    "scripts": {
+        "test":"vendor/bin/phpspec run"
+    },
     "require": {
         "php": "^7.3||^8.0",
         "ext-ctype": "*",
