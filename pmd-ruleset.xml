@@ -10,6 +10,7 @@
 
     <rule ref="rulesets/cleancode.xml">
         <exclude name="BooleanArgumentFlag"/>
+        <exclude name="StaticAccess" />
     </rule>
 
     <rule ref="rulesets/codesize.xml"/>
@@ -45,5 +46,18 @@
 
     <rule ref="rulesets/unusedcode.xml">
         <exclude name="UnusedFormalParameter" />
+    </rule>
+
+    <rule ref="rulesets/cleancode.xml/StaticAccess">
+        <properties>
+            <property name="exceptions">
+                <value>
+                    \DateTime,
+                    \DateInterval,
+                    \DateTimeZone,
+                    \Hoa\Compiler\Llk\Llk
+                </value>
+            </property>
+        </properties>
     </rule>
 </ruleset>

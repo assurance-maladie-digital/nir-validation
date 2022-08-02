@@ -2,6 +2,9 @@ grumphp:
     ascii:
         failed:
         succeeded:
+    fixer:
+        enabled: true
+        fix_by_default: true
     tasks:
         phpcsfixer:
             config: '.php-cs-fixer.dist.php'

@@ -39,6 +39,7 @@ $config->setRiskyAllowed(true)
             'phpdoc_var_without_name' => false,
             'error_suppression' => false,
             'standardize_not_equals' => false,
+            'modernize_types_casting' => false,
 
             // @Symfony customised rules
             'concat_space' => ['spacing' => 'one'],

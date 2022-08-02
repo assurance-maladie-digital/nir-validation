@@ -5,13 +5,15 @@
     "license": "MIT",
     "minimum-stability": "stable",
     "scripts": {
-        "test":"vendor/bin/phpspec run"
+        "test":"vendor/bin/phpspec run",
+        "qual":"vendor/bin/grumphp run"
     },
     "require": {
         "php": "^7.3||^8.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "fakerphp/faker": "^1.20",
+        "hoa/regex": "1.17.01.13",
         "symfony/validator": "^4.4||^5.3"
     },
     "require-dev": {
@@ -38,7 +40,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Spec\\": "tests/Spec"
+            "Spec\\Cnamts\\Nir\\": "tests/Spec/"
         }
     }
 }

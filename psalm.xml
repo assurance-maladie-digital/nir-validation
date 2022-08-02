@@ -5,6 +5,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    throwExceptionOnError="true"
 >
     <projectFiles>
         <directory name="src" />
@@ -27,6 +28,7 @@
                 <file name="src/Constraints/Mig.php" />
                 <file name="src/Constraints/Nir.php" />
                 <file name="src/Constraints/Nnp.php" />
+                <file name="src/Faker/NirProvider.php" />
             </errorLevel>
         </PropertyNotSetInConstructor>
         <MixedArgumentTypeCoercion>
@@ -39,5 +41,15 @@
                 <file name="src/Constraints/Nir.php" />
             </errorLevel>
         </MissingParamType>
+        <MixedAssignment>
+            <errorLevel type="suppress">
+                <file name="src/Faker/NirProvider.php" />
+            </errorLevel>
+        </MixedAssignment>
+        <MixedArgument>
+            <errorLevel type="suppress">
+                <file name="src/Faker/NirProvider.php" />
+            </errorLevel>
+        </MixedArgument>
     </issueHandlers>
 </psalm>
