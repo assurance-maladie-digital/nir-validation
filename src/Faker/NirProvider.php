@@ -42,9 +42,7 @@ class NirProvider extends Base
     {
         parent::__construct($generator);
 
-        // 1. Load grammar.
         $compiler = Llk::load(new Read('vendor/hoa/regex/Grammar.pp'));
-        // 2. Parse a data.
 
         /** @phpstan-ignore-next-line */
         $this->ast = $compiler->parse($this->regex);

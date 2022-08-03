@@ -5,8 +5,8 @@
     "license": "MIT",
     "minimum-stability": "stable",
     "scripts": {
-        "test":"vendor/bin/phpspec run",
-        "qual":"vendor/bin/grumphp run"
+        "test": "vendor/bin/phpspec run",
+        "qual": "vendor/bin/grumphp run"
     },
     "require": {
         "php": "^7.3||^8.0",

@@ -18,16 +18,20 @@ class NirProviderSpec extends ObjectBehavior
         $this->beConstructedWith($generator);
     }
 
-    public function it_generates_valid_nir(ExecutionContextInterface $context,
-        ConstraintViolationBuilderInterface $constraintViolationBuilder)
+    public function it_generates_valid_nir(
+        ExecutionContextInterface $context,
+        ConstraintViolationBuilderInterface $constraintViolationBuilder
+    )
     {
         $value = $this->generateValidNir();
         $constraintViolationBuilder->addViolation()->shouldNotBeCalled();
         $this->valideNir($value, $context);
     }
 
-    public function it_generates_different_nir_on_call(ExecutionContextInterface $context,
-        ConstraintViolationBuilderInterface $constraintViolationBuilder)
+    public function it_generates_different_nir_on_call(
+        ExecutionContextInterface $context,
+        ConstraintViolationBuilderInterface $constraintViolationBuilder
+    )
     {
         $value = $this->generateValidNir();
         $constraintViolationBuilder->addViolation()->shouldNotBeCalled();
@@ -38,11 +42,11 @@ class NirProviderSpec extends ObjectBehavior
     }
 
     /**
-     * valide un nir generé a partir du validator du package
+     * Valide un NIR généré à partir du validateur du package
      * @param $value
      * @param $context
      */
-    private function valideNir($value, $context)
+    private function validateNir($value, $context)
     {
         $nir = new Nir();
         $val = new NirValidator();
