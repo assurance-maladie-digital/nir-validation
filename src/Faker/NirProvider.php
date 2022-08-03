@@ -25,7 +25,7 @@ class NirProvider extends Base
     . '(\d{3})';
 
     /**
-     * @var  Element
+     * @var Element
      */
     private $ast;
 
