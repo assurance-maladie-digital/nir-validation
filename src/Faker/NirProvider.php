@@ -4,55 +4,28 @@ declare(strict_types=1);
 
 namespace Cnamts\Nir\Faker;
 
-use Faker\Generator;
 use Faker\Provider\Base;
-use Hoa\Compiler\Llk\Llk;
-use Hoa\File\Read;
-use Hoa\Math\Sampler\Random;
-use Hoa\Regex\Visitor\Isotropic;
-use Hoa\Visitor\Element;
 
 class NirProvider extends Base
 {
-    /**
-     * @var string
-     */
-    private $regex = '[12]'
-    . '(\d{2})'
-    . '(1[0-2]|0[1-9])'
-    . '(\d{2}|2A|2B)'
-    . '(\d{3})'
-    . '(\d{3})';
-
-    /**
-     * @var Element
-     */
-    private $ast;
-
-    /**
-     * @var Isotropic
-     */
-    private $isotropicGenerator;
-
-    /**
-     * NirProvider constructor.
-     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
-     */
-    public function __construct(Generator $generator)
-    {
-        parent::__construct($generator);
-
-        $compiler = Llk::load(new Read('vendor/hoa/regex/Grammar.pp'));
-
-        /** @phpstan-ignore-next-line */
-        $this->ast = $compiler->parse($this->regex);
-
-        /** @phpstan-ignore-next-line */
-        $this->isotropicGenerator = new Isotropic(new Random());
-    }
-
     public function generateValidNir(): string
     {
-        return strval($this->isotropicGenerator->visit($this->ast));
+        $moisNaissance = ['1' . rand(0, 2), '0' . rand(0, 9)];
+        $departementNaissance = [$this->generateNumber(2), '2A', '2B'];
+        $value = rand(1, 2)
+            . $this->generateNumber(2)
+        . $moisNaissance[array_rand($moisNaissance)]
+        . $departementNaissance[array_rand($departementNaissance)]
+        . $this->generateNumber(3)
+        . $this->generateNumber(3);
+
+        return $value;
+    }
+
+    private function generateNumber(int $digit): string
+    {
+        $number = rand(0, 10 ** $digit);
+
+        return str_pad(strval($number), $digit, '0', \STR_PAD_LEFT);
     }
 }

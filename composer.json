@@ -13,7 +13,6 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "fakerphp/faker": "^1.20",
-        "hoa/regex": "1.17.*",
         "symfony/validator": "^4.4||^5.3"
     },
     "require-dev": {

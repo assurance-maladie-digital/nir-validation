@@ -21,23 +21,21 @@ class NirProviderSpec extends ObjectBehavior
     public function it_generates_valid_nir(
         ExecutionContextInterface $context,
         ConstraintViolationBuilderInterface $constraintViolationBuilder
-    )
-    {
+    ) {
         $value = $this->generateValidNir();
         $constraintViolationBuilder->addViolation()->shouldNotBeCalled();
-        $this->valideNir($value, $context);
+        $this->validateNir($value, $context);
     }
 
     public function it_generates_different_nir_on_call(
         ExecutionContextInterface $context,
         ConstraintViolationBuilderInterface $constraintViolationBuilder
-    )
-    {
+    ) {
         $value = $this->generateValidNir();
         $constraintViolationBuilder->addViolation()->shouldNotBeCalled();
         $valueNext = $this->generateValidNir();
-        $this->valideNir($value, $context);
-        $this->valideNir($valueNext, $context);
+        $this->validateNir($value, $context);
+        $this->validateNir($valueNext, $context);
         $value->shouldNotEqual($valueNext);
     }
 
