@@ -11,6 +11,16 @@ use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
 class NirValidator extends ConstraintValidator
 {
+    public const NIR_REGEX = '/\A' .
+            '(?<sexe>[12])' .
+            '(?<anneeNaissance>\d{2})' .
+            '(?<moisNaissance>1[0-2]|0[1-9])' .
+            '(?<departementNaissance>\d{2}|2A|2B)' .
+            '(?<communeNaissance>\d{3})' .
+            '(?<rangInscription>\d{3})' .
+            '(?<cle>9[0-7]|[0-8]\d)?' .
+            '\z/i';
+
     public function validate($value, Constraint $constraint): void
     {
         if (!$constraint instanceof Nir) {
@@ -63,18 +73,7 @@ class NirValidator extends ConstraintValidator
      */
     private function check(string $nir): bool
     {
-        return (bool) preg_match(
-            '/\A' .
-            '(?<sexe>[12])' .
-            '(?<anneeNaissance>\d{2})' .
-            '(?<moisNaissance>1[0-2]|0[1-9])' .
-            '(?<departementNaissance>\d{2}|2A|2B)' .
-            '(?<communeNaissance>\d{3})' .
-            '(?<rangInscription>\d{3})' .
-            '(?<cle>9[0-7]|[0-8]\d)?' .
-            '\z/i',
-            $nir
-        );
+        return (bool) preg_match(self::NIR_REGEX, $nir);
     }
 
     private function isNirKeyValid(string $nir, NirKeyInterface $nirKey): bool

@@ -6,15 +6,23 @@ namespace Spec\Cnamts\Nir\Faker;
 
 use Cnamts\Nir\Constraints\Nir;
 use Cnamts\Nir\Constraints\NirValidator;
+use Faker\Factory;
 use Faker\Generator;
+use Faker\Provider\Person;
 use PhpSpec\ObjectBehavior;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use Symfony\Component\Validator\Violation\ConstraintViolationBuilderInterface;
 
 class NirProviderSpec extends ObjectBehavior
 {
+    /**
+     * @var Generator
+     */
+    private $faker;
+
     public function let(Generator $generator)
     {
+        $this->faker = Factory::create('fr_FR');
         $this->beConstructedWith($generator);
     }
 
@@ -22,7 +30,7 @@ class NirProviderSpec extends ObjectBehavior
         ExecutionContextInterface $context,
         ConstraintViolationBuilderInterface $constraintViolationBuilder
     ) {
-        $value = $this->generateValidNir();
+        $value = $this->nirFromParams();
         $constraintViolationBuilder->addViolation()->shouldNotBeCalled();
         $this->validateNir($value, $context);
     }
@@ -31,18 +39,30 @@ class NirProviderSpec extends ObjectBehavior
         ExecutionContextInterface $context,
         ConstraintViolationBuilderInterface $constraintViolationBuilder
     ) {
-        $value = $this->generateValidNir();
+        $value = $this->nirFromParams();
         $constraintViolationBuilder->addViolation()->shouldNotBeCalled();
-        $valueNext = $this->generateValidNir();
+        $valueNext = $this->nirFromParams();
         $this->validateNir($value, $context);
         $this->validateNir($valueNext, $context);
         $value->shouldNotEqual($valueNext);
     }
 
+    public function it_generates_nir_from_params(
+        ExecutionContextInterface $context,
+        ConstraintViolationBuilderInterface $constraintViolationBuilder
+    ) {
+        $gender = $this->faker->randomElement([Person::GENDER_MALE, Person::GENDER_FEMALE]);
+        $dateNaissance = $this->faker->dateTime();
+        $departement = $this->faker->departmentNumber();
+        $value = $this->nirFromParams($gender, $dateNaissance, $departement);
+        $constraintViolationBuilder->addViolation()->shouldNotBeCalled();
+        $this->validateNir($value, $context);
+
+        $value->shouldbeNirFromParams($dateNaissance, $departement);
+    }
+
     /**
      * Valide un NIR généré à partir du validateur du package
-     * @param $value
-     * @param $context
      */
     private function validateNir($value, $context)
     {
@@ -50,5 +70,19 @@ class NirProviderSpec extends ObjectBehavior
         $val = new NirValidator();
         $val->initialize($context->getWrappedObject());
         $val->validate($value->getWrappedObject(), $nir);
+    }
+
+    public function getMatchers(): array
+    {
+        return [
+            'beNirFromParams' => function (string $value, \DateTime $dateNaissance, string $departement) {
+                $bool = preg_match(NirValidator::NIR_REGEX, $value, $matches);
+                $verifYear = $matches['moisNaissance'] === $dateNaissance->format('m');
+                $verifMonth = $matches['moisNaissance'] === $dateNaissance->format('m');
+                $verifDepartement = $matches['departementNaissance'] === mb_substr($departement, 0, 2);
+
+                return $bool && $verifYear && $verifMonth && $verifDepartement;
+            },
+        ];
     }
 }

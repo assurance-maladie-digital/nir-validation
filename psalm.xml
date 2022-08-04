@@ -29,6 +29,7 @@
                 <file name="src/Constraints/Nir.php" />
                 <file name="src/Constraints/Nnp.php" />
                 <file name="src/Faker/NirProvider.php" />
+                <file name="src/Faker/NnpProvider.php" />
             </errorLevel>
         </PropertyNotSetInConstructor>
         <MixedArgumentTypeCoercion>
@@ -41,15 +42,5 @@
                 <file name="src/Constraints/Nir.php" />
             </errorLevel>
         </MissingParamType>
-        <MixedAssignment>
-            <errorLevel type="suppress">
-                <file name="src/Faker/NirProvider.php" />
-            </errorLevel>
-        </MixedAssignment>
-        <MixedArgument>
-            <errorLevel type="suppress">
-                <file name="src/Faker/NirProvider.php" />
-            </errorLevel>
-        </MixedArgument>
     </issueHandlers>
 </psalm>

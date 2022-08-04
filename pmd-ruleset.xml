@@ -55,7 +55,8 @@
                     \DateTime,
                     \DateInterval,
                     \DateTimeZone,
-                    \Hoa\Compiler\Llk\Llk
+                    \Faker\Provider\fr_FR\Address,
+                    \Faker\Factory
                 </value>
             </property>
         </properties>
