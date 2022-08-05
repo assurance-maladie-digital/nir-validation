@@ -9,9 +9,7 @@ use Faker\Provider\fr_FR\Person;
 
 class NnpProvider extends Base
 {
-    /**
-     * @SuppressWarnings(PHPMD.ElseExpression)
-     */
+    /** @SuppressWarnings(PHPMD.ElseExpression) */
     public function nnp(string $gender = null): string
     {
         // Gender
@@ -31,7 +29,7 @@ class NnpProvider extends Base
         // le 3ème composant est un groupe de trois chiffres correspondant au numéro de caisse
         $nnp .= $this->numerify('###');
 
-        // e 4ème composant correspond au numéro d'ordre par caisse
+        // le 4ème composant correspond au numéro d'ordre par caisse
         $nnp .= $this->numerify('########');
 
         return $nnp;

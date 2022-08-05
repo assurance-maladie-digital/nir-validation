@@ -15,9 +15,7 @@ use Symfony\Component\Validator\Violation\ConstraintViolationBuilderInterface;
 
 class NirProviderSpec extends ObjectBehavior
 {
-    /**
-     * @var Generator
-     */
+    /** @var Generator */
     private $faker;
 
     public function let(Generator $generator)
@@ -61,9 +59,7 @@ class NirProviderSpec extends ObjectBehavior
         $value->shouldbeNirFromParams($dateNaissance, $departement);
     }
 
-    /**
-     * Valide un NIR généré à partir du validateur du package
-     */
+    /** Valide un NIR généré à partir du validateur du package */
     private function validateNir($value, $context)
     {
         $nir = new Nir();
@@ -82,7 +78,7 @@ class NirProviderSpec extends ObjectBehavior
                 $verifDepartement = $matches['departementNaissance'] === mb_substr($departement, 0, 2);
 
                 return $bool && $verifYear && $verifMonth && $verifDepartement;
-            },
+            }
         ];
     }
 }

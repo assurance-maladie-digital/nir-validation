@@ -10,10 +10,8 @@ use Faker\Provider\fr_FR\Person;
 
 class NirProvider extends Base
 {
-    /**
-     * @SuppressWarnings(PHPMD.ElseExpression)
-     */
-    public function nirFromParams(string $gender = null, \DateTime $date = null, string $departementCode = null): string
+    /** @SuppressWarnings(PHPMD.ElseExpression) */
+    public function nirFromParams(string $gender = null, \DateTime $birthday = null, string $departmentCode = null): string
     {
         // Gender
         if ($gender === Person::GENDER_MALE) {

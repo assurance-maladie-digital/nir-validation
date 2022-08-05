@@ -39,9 +39,7 @@ class NnpProviderSpec extends ObjectBehavior
         $value->shouldNotEqual($valueNext);
     }
 
-    /**
-     * Valide un Nnp généré à partir du validateur du package
-     */
+    /** Valide un NNP généré à partir du validateur du package */
     private function validateNnp($value, $context)
     {
         $nnp = new Nnp();
