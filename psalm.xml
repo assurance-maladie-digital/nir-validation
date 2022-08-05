@@ -28,18 +28,21 @@
                 <file name="src/Constraints/Mig.php" />
                 <file name="src/Constraints/Nir.php" />
                 <file name="src/Constraints/Nnp.php" />
-                <file name="src/Faker/NirProvider.php" />
+                <file name="src/Faker/AssureProvider.php" />
                 <file name="src/Faker/NnpProvider.php" />
             </errorLevel>
         </PropertyNotSetInConstructor>
         <MixedArgumentTypeCoercion>
             <errorLevel type="suppress">
                 <file name="src/Constraints/Nir.php" />
+                <file name="src/Faker/AssureProvider.php" />
             </errorLevel>
         </MixedArgumentTypeCoercion>
         <MissingParamType>
             <errorLevel type="suppress">
                 <file name="src/Constraints/Nir.php" />
+                <file name="src/Faker/AssureProvider.php" />
+                <file name="src/Faker/NnpProvider.php" />
             </errorLevel>
         </MissingParamType>
     </issueHandlers>

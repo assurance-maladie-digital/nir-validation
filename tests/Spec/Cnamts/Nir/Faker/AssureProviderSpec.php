@@ -13,7 +13,7 @@ use PhpSpec\ObjectBehavior;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 use Symfony\Component\Validator\Violation\ConstraintViolationBuilderInterface;
 
-class NirProviderSpec extends ObjectBehavior
+class AssureProviderSpec extends ObjectBehavior
 {
     /** @var Generator */
     private $faker;
@@ -28,20 +28,15 @@ class NirProviderSpec extends ObjectBehavior
         ExecutionContextInterface $context,
         ConstraintViolationBuilderInterface $constraintViolationBuilder
     ) {
-        $value = $this->nirFromParams();
+        $value = $this->nir();
         $constraintViolationBuilder->addViolation()->shouldNotBeCalled();
         $this->validateNir($value, $context);
     }
 
-    public function it_generates_different_nir_on_call(
-        ExecutionContextInterface $context,
-        ConstraintViolationBuilderInterface $constraintViolationBuilder
-    ) {
-        $value = $this->nirFromParams();
-        $constraintViolationBuilder->addViolation()->shouldNotBeCalled();
-        $valueNext = $this->nirFromParams();
-        $this->validateNir($value, $context);
-        $this->validateNir($valueNext, $context);
+    public function it_generates_different_nir_on_call()
+    {
+        $value = $this->nir();
+        $valueNext = $this->nir();
         $value->shouldNotEqual($valueNext);
     }
 
@@ -52,7 +47,7 @@ class NirProviderSpec extends ObjectBehavior
         $gender = $this->faker->randomElement([Person::GENDER_MALE, Person::GENDER_FEMALE]);
         $dateNaissance = $this->faker->dateTime();
         $departement = $this->faker->departmentNumber();
-        $value = $this->nirFromParams($gender, $dateNaissance, $departement);
+        $value = $this->nir($gender, false, $dateNaissance, $departement);
         $constraintViolationBuilder->addViolation()->shouldNotBeCalled();
         $this->validateNir($value, $context);
 
@@ -78,7 +73,7 @@ class NirProviderSpec extends ObjectBehavior
                 $verifDepartement = $matches['departementNaissance'] === mb_substr($departement, 0, 2);
 
                 return $bool && $verifYear && $verifMonth && $verifDepartement;
-            }
+            },
         ];
     }
 }

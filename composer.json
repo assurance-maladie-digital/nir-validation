@@ -39,7 +39,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Spec\\Cnamts\\Nir\\": "tests/Spec/"
+            "Spec\\": "tests/Spec"
         }
     }
 }

@@ -47,18 +47,4 @@
     <rule ref="rulesets/unusedcode.xml">
         <exclude name="UnusedFormalParameter" />
     </rule>
-
-    <rule ref="rulesets/cleancode.xml/StaticAccess">
-        <properties>
-            <property name="exceptions">
-                <value>
-                    \DateTime,
-                    \DateInterval,
-                    \DateTimeZone,
-                    \Faker\Provider\fr_FR\Address,
-                    \Faker\Factory
-                </value>
-            </property>
-        </properties>
-    </rule>
 </ruleset>
