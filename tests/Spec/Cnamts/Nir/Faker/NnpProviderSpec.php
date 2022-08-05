@@ -27,15 +27,10 @@ class NnpProviderSpec extends ObjectBehavior
         $this->validateNnp($value, $context);
     }
 
-    public function it_generates_different_nir_on_call(
-        ExecutionContextInterface $context,
-        ConstraintViolationBuilderInterface $constraintViolationBuilder
-    ) {
+    public function it_generates_different_nir_on_call()
+    {
         $value = $this->nnp();
-        $constraintViolationBuilder->addViolation()->shouldNotBeCalled();
         $valueNext = $this->nnp();
-        $this->validateNnp($value, $context);
-        $this->validateNnp($valueNext, $context);
         $value->shouldNotEqual($valueNext);
     }
 
