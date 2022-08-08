@@ -22,24 +22,23 @@ class NnpProviderSpec extends ObjectBehavior
         ExecutionContextInterface $context,
         ConstraintViolationBuilderInterface $constraintViolationBuilder
     ) {
-        $value = $this->nnp();
         $constraintViolationBuilder->addViolation()->shouldNotBeCalled();
-        $this->validateNnp($value, $context);
+        $this->validateNnp($this->nnp(), $context);
     }
 
     public function it_generates_different_nir_on_call()
     {
-        $value = $this->nnp();
-        $valueNext = $this->nnp();
-        $value->shouldNotEqual($valueNext);
+        $nnp = $this->nnp();
+        $nnpNext = $this->nnp();
+        $nnp->shouldNotEqual($nnpNext);
     }
 
     /** Valide un NNP généré à partir du validateur du package */
-    private function validateNnp($value, $context)
+    private function validateNnp($nnp, $context)
     {
-        $nnp = new Nnp();
-        $val = new NnpValidator();
-        $val->initialize($context->getWrappedObject());
-        $val->validate($value->getWrappedObject(), $nnp);
+        $constraint = new Nnp();
+        $nnpValidator = new NnpValidator();
+        $nnpValidator->initialize($context->getWrappedObject());
+        $nnpValidator->validate($nnp->getWrappedObject(), $constraint);
     }
 }

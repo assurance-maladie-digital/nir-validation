@@ -28,16 +28,15 @@ class AssureProviderSpec extends ObjectBehavior
         ExecutionContextInterface $context,
         ConstraintViolationBuilderInterface $constraintViolationBuilder
     ) {
-        $value = $this->nir();
         $constraintViolationBuilder->addViolation()->shouldNotBeCalled();
-        $this->validateNir($value, $context);
+        $this->validateNir($this->nir(), $context);
     }
 
     public function it_generates_different_nir_on_call()
     {
-        $value = $this->nir();
-        $valueNext = $this->nir();
-        $value->shouldNotEqual($valueNext);
+        $nir = $this->nir();
+        $nirNext = $this->nir();
+        $nir->shouldNotEqual($nirNext);
     }
 
     public function it_generates_nir_from_params(
@@ -47,20 +46,20 @@ class AssureProviderSpec extends ObjectBehavior
         $gender = $this->faker->randomElement([Person::GENDER_MALE, Person::GENDER_FEMALE]);
         $dateNaissance = $this->faker->dateTime();
         $departement = $this->faker->departmentNumber();
-        $value = $this->nir($gender, false, $dateNaissance, $departement);
+        $nir = $this->nir($gender, false, $dateNaissance, $departement);
         $constraintViolationBuilder->addViolation()->shouldNotBeCalled();
-        $this->validateNir($value, $context);
+        $this->validateNir($nir, $context);
 
-        $value->shouldbeNirFromParams($dateNaissance, $departement);
+        $nir->shouldbeNirFromParams($dateNaissance, $departement);
     }
 
     /** Valide un NIR généré à partir du validateur du package */
-    private function validateNir($value, $context)
+    private function validateNir($nir, $context)
     {
-        $nir = new Nir();
-        $val = new NirValidator();
-        $val->initialize($context->getWrappedObject());
-        $val->validate($value->getWrappedObject(), $nir);
+        $constraint = new Nir();
+        $nirValidator = new NirValidator();
+        $nirValidator->initialize($context->getWrappedObject());
+        $nirValidator->validate($nir->getWrappedObject(), $constraint);
     }
 
     public function getMatchers(): array
