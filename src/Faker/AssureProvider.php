@@ -47,14 +47,14 @@ class AssureProvider extends Person
             return
                 // Year of birth (aa)
                 $this->numerify('##') .
-                // Mont of birth (mm)
+                // Month of birth (mm)
                 sprintf('%02d', $this->numberBetween(1, 12));
         }
 
         return $birthday->format('ym');
     }
 
-    private function getDepartementPart(?string $departmentCode): string
+    private function getDepartmentPart(?string $departmentCode): string
     {
         // Department
         $department = $departmentCode ?? (string) key(Address::department());

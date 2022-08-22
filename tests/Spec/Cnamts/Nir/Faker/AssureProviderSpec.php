@@ -65,13 +65,14 @@ class AssureProviderSpec extends ObjectBehavior
     public function getMatchers(): array
     {
         return [
-            'beNirFromParams' => function (string $value, \DateTime $dateNaissance, string $departement) {
-                $bool = preg_match(NirValidator::NIR_REGEX, $value, $matches);
-                $verifYear = $matches['moisNaissance'] === $dateNaissance->format('m');
-                $verifMonth = $matches['moisNaissance'] === $dateNaissance->format('m');
-                $verifDepartement = $matches['departementNaissance'] === mb_substr($departement, 0, 2);
+            'beNir' => function (string $value, \DateTime $dateNaissance, string $departement) {
+                $isNirRegex = preg_match(NirValidator::NIR_REGEX, $value, $matches);
+                $checkYear = $matches['anneeNaissance'] === $dateNaissance->format('y');
+                $checkMonth = $matches['moisNaissance'] === $dateNaissance->format('m');
+                $checkDepartment = mb_strpos($departement, $matches['departementNaissance']) === 0;
 
-                return $bool && $verifYear && $verifMonth && $verifDepartement;
+                return $isNirRegex && $checkYear && $checkMonth && $checkDepartment;
+            }
             },
         ];
     }
