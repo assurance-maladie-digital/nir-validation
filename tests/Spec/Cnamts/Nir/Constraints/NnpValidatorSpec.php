@@ -58,7 +58,7 @@ class NnpValidatorSpec extends ObjectBehavior
     public function it_expects_constraint_compatible_type()
     {
         $this->shouldThrow(UnexpectedTypeException::class)
-            ->during('validate', ['', (new class() extends Constraint {})])
+            ->during('validate', ['', new class() extends Constraint {}])
         ;
     }
 }
