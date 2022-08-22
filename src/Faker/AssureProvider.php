@@ -12,7 +12,7 @@ class AssureProvider extends Person
     /* @phpstan-ignore-next-line */
     public function nir($gender = null, $formatted = false, \DateTime $birthday = null, string $departmentCode = null): string
     {
-        $departementPart = $this->getDepartementPart($departmentCode);
+        $departementPart = $this->getDepartmentPart($departmentCode);
         $nir = $this->getGenderPart($gender)
             . $this->getDateBirthPart($birthday)
             . $departementPart

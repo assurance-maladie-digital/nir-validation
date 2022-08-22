@@ -50,7 +50,7 @@ class AssureProviderSpec extends ObjectBehavior
         $constraintViolationBuilder->addViolation()->shouldNotBeCalled();
         $this->validateNir($nir, $context);
 
-        $nir->shouldbeNirFromParams($dateNaissance, $departement);
+        $nir->shouldbeNir($dateNaissance, $departement);
     }
 
     /** Valide un NIR généré à partir du validateur du package */
@@ -67,12 +67,11 @@ class AssureProviderSpec extends ObjectBehavior
         return [
             'beNir' => function (string $value, \DateTime $dateNaissance, string $departement) {
                 $isNirRegex = preg_match(NirValidator::NIR_REGEX, $value, $matches);
-                $checkYear = $matches['anneeNaissance'] === $dateNaissance->format('y');
-                $checkMonth = $matches['moisNaissance'] === $dateNaissance->format('m');
-                $checkDepartment = mb_strpos($departement, $matches['departementNaissance']) === 0;
+                $isSameYear = $matches['anneeNaissance'] === $dateNaissance->format('y');
+                $isSameMonth = $matches['moisNaissance'] === $dateNaissance->format('m');
+                $isSameDepartment = mb_strpos($departement, $matches['departementNaissance']) === 0;
 
-                return $isNirRegex && $checkYear && $checkMonth && $checkDepartment;
-            }
+                return $isNirRegex && $isSameYear && $isSameMonth && $isSameDepartment;
             },
         ];
     }
