@@ -46,6 +46,7 @@ $config->setRiskyAllowed(true)
             'single_quote' => ['strings_containing_single_quote_chars' => true],
             'visibility_required' => ['elements' => ['property', 'method', 'const']],
             'yoda_style' => ['equal' => false, 'identical' => false, 'less_and_greater' => false],
+            'global_namespace_import' => true,
 
             // Additional code style rules whitelisting:
             'align_multiline_comment' => true,

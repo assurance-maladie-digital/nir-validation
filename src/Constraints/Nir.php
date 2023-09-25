@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cnamts\Nir\Constraints;
 
+use Attribute;
 use Cnamts\Nir\Exception\InterfaceNotImplementedException;
 use Cnamts\Nir\Exception\NoArgumentError;
 use Cnamts\Nir\NirKey;
@@ -15,7 +16,7 @@ use Symfony\Component\Validator\Constraint;
  * @Annotation
  * @Target({"PROPERTY", "METHOD", "ANNOTATION"})
  */
-#[\Attribute(\Attribute::TARGET_PROPERTY | \Attribute::TARGET_METHOD | \Attribute::IS_REPEATABLE)]
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_METHOD | Attribute::IS_REPEATABLE)]
 class Nir extends Constraint
 {
     public const LENGTH_ERROR = '132da656-8944-475d-b502-3ca00c6c3528';
