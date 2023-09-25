@@ -17,7 +17,7 @@ $config->setRiskyAllowed(true)
             // @Symfony code styles rules blacklisting:
             'method_chaining_indentation' => true,
             'no_singleline_whitespace_before_semicolons' => true,
-            'no_trailing_comma_in_list_call' => false,
+            'no_trailing_comma_in_singleline' => false,
             'php_unit_fqcn_annotation' => false,
             'phpdoc_align' => false,
             'phpdoc_annotation_without_dot' => false,
@@ -47,6 +47,7 @@ $config->setRiskyAllowed(true)
             'visibility_required' => ['elements' => ['property', 'method', 'const']],
             'yoda_style' => ['equal' => false, 'identical' => false, 'less_and_greater' => false],
             'global_namespace_import' => true,
+            'no_superfluous_phpdoc_tags' => false,
 
             // Additional code style rules whitelisting:
             'align_multiline_comment' => true,
