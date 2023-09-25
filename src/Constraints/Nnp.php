@@ -24,8 +24,14 @@ class Nnp extends Constraint
     public $nnpMessage = 'Cette valeur n\'est pas au format NNP.';
 
     /** @var array<string, string> */
-    protected static $errorNames = [
+    protected const ERROR_NAMES = [
         self::LENGTH_ERROR => 'LENGTH_ERROR',
         self::NNP_INVALID => 'NNP_INVALID',
     ];
+
+    /**
+     * @var array<string, string>
+     * @deprecated since Symfony 6.1, use const ERROR_NAMES instead
+     */
+    protected static $errorNames = self::ERROR_NAMES;
 }

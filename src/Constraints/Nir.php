@@ -33,11 +33,17 @@ class Nir extends Constraint
     public $nirKeyMessage = 'La clé ne correspond pas au NIR fourni.';
 
     /** @var array<string, string> */
-    protected static $errorNames = [
+    protected const ERROR_NAMES = [
         self::LENGTH_ERROR => 'LENGTH_ERROR',
         self::NIR_INVALID => 'NIR_INVALID',
         self::NIR_KEY_INVALID => 'NIR_KEY_INVALID',
     ];
+
+    /**
+     * @var array<string, string>
+     * @deprecated since Symfony 6.1, use const ERROR_NAMES instead
+     */
+    protected static $errorNames = self::ERROR_NAMES;
 
     /** @var NirKeyInterface */
     public $nirKey;

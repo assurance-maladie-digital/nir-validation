@@ -24,8 +24,14 @@ class Mig extends Constraint
     public $migMessage = 'Cette valeur n\'est pas au format MIG.';
 
     /** @var array<string, string> */
-    protected static $errorNames = [
+    protected const ERROR_NAMES = [
         self::LENGTH_ERROR => 'LENGTH_ERROR',
         self::MIG_INVALID => 'MIG_INVALID',
     ];
+
+    /**
+     * @var array<string, string>
+     * @deprecated since Symfony 6.1, use const ERROR_NAMES instead
+     */
+    protected static $errorNames = self::ERROR_NAMES;
 }
