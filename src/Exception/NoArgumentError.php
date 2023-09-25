@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Cnamts\Nir\Exception;
 
-class NoArgumentError extends \TypeError
+use TypeError;
+
+class NoArgumentError extends TypeError
 {
     public function __construct(int $nbParameters)
     {
