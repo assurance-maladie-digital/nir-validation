@@ -8,7 +8,7 @@
         "php": "^7.3||^8.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "symfony/validator": "^4.4||^5.3||^6.0"
+        "symfony/validator": "^7.1.4"
     },
     "require-dev": {
         "assurance-maladie/qualytou": "^2.0",
