@@ -34,4 +34,17 @@ class Nnp extends Constraint
      * @deprecated since Symfony 6.1, use const ERROR_NAMES instead
      */
     protected static $errorNames = self::ERROR_NAMES;
+
+    /**
+     * Indique si les règles de format des NNP avant 2012 doivent être appliquées.
+     *
+     * Si true, le système accepte les NNP avec un 0, conformément aux
+     * anciennes règles dont la trace a été perdue mais qui concernent encore
+     * certains assurés.
+     * Si false, seules les règles post-2012, qui ne permettent pas les NNP
+     * avec un 0, seront appliquées.
+     *
+     * @var bool
+     */
+    public $useBefore2012 = false;
 }
