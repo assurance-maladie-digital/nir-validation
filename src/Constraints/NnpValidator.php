@@ -35,7 +35,7 @@ class NnpValidator extends ConstraintValidator
             return;
         }
 
-        if (!$this->check($nnp)) {
+        if (!$this->check($nnp, $constraint)) {
             $this->context->buildViolation($constraint->nnpMessage)
                 ->setInvalidValue($value)
                 ->setCode(Nnp::NNP_INVALID)
@@ -50,12 +50,15 @@ class NnpValidator extends ConstraintValidator
      * le 3ème composant est un groupe de trois chiffres correspondant au numéro de caisse ;
      * le 4ème composant correspond au numéro d'ordre par caisse ;
      */
-    private function check(string $nnp): bool
+    private function check(string $nnp, Nnp $constraint): bool
     {
+        // Si useBefore2012 est true, on autorise également la valeur '0' dans la partie 'verification'
+        $verificationPattern = $constraint->useBefore2012 ? '[012]' : '[12]';
+
         return (bool) preg_match(
             '/\A' .
             '(?<sexe>[78])' .
-            '(?<verification>[12])' .
+            '(?<verification>' . $verificationPattern . ')' .
             '(?<numero_caisse>\d{3})' .
             '(?<numero_ordre>\d{8})' .
             '\z/i',
