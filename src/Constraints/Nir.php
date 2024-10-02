@@ -19,14 +19,11 @@ class Nir extends Constraint
     public const NIR_INVALID = '83aac6e0-27c2-488c-9b6d-f5a42e3347d5';
     public const NIR_KEY_INVALID = 'd23783f3-9141-4a88-83be-3c0c3df340ad';
 
-    /** @var string */
-    public $lengthMessage = 'Cette valeur n\'a pas la bonne longueur. Elle doit comporter 13 ou 15 caractères.';
+    public string $lengthMessage = 'Cette valeur n\'a pas la bonne longueur. Elle doit comporter 13 ou 15 caractères.';
 
-    /** @var string */
-    public $nirMessage = 'Cette valeur n\'est pas au format NIR.';
+    public string $nirMessage = 'Cette valeur n\'est pas au format NIR.';
 
-    /** @var string */
-    public $nirKeyMessage = 'La clé ne correspond pas au NIR fourni.';
+    public string $nirKeyMessage = 'La clé ne correspond pas au NIR fourni.';
 
     /** @var array<string, string> */
     protected const ERROR_NAMES = [
@@ -35,19 +32,11 @@ class Nir extends Constraint
         self::NIR_KEY_INVALID => 'NIR_KEY_INVALID',
     ];
 
-    /**
-     * @var array<string, string>
-     * @deprecated since Symfony 6.1, use const ERROR_NAMES instead
-     */
-    protected static $errorNames = self::ERROR_NAMES;
+    public NirKeyInterface $nirKey;
 
-    /** @var NirKeyInterface */
-    public $nirKey;
+    private string $classNameNirKey;
 
-    /** @var string */
-    private $classNameNirKey;
-
-    public function __construct($options = null, array $groups = null, $payload = null, string $classNameNirKey = null)
+    public function __construct($options = null, ?array $groups = null, $payload = null, ?string $classNameNirKey = null)
     {
         parent::__construct($options, $groups, $payload);
 
