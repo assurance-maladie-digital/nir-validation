@@ -8,13 +8,21 @@ use PhpSpec\ObjectBehavior;
 
 class NirKeySpec extends ObjectBehavior
 {
-    public function it_does_not_accept_wrong_key_of_nir()
+    private const VALID_NIR_KEYS = [
+        '2 55 08 14 168 025' => 38,
+        '2 94 03 75 120 005' => 91,
+        '1 53 12 45 007 231' => 60,
+        '2 84 05 2A 321 025' => 52,
+        '2 84 05 2a 321 025' => 52,
+        ' 1234 5678 9012 3 ' => 11,
+        '284052A321025' => 52,
+        '2B34567890123' => 78,
+    ];
+
+    public function it_computes_correct_key_for_valid_nir(): void
     {
-        $this->compute('2 55 08 14 168 025')->shouldReturn(38);
-        $this->compute('2 94 03 75 120 005')->shouldReturn(91);
-        $this->compute('1 53 12 45 007 231')->shouldReturn(60);
-        $this->compute('2 84 05 2A 321 025')->shouldReturn(52);
-        $this->compute('2 84 05 2a 321 025')->shouldReturn(52);
-        $this->compute('284052A321025')->shouldReturn(52);
+        foreach (self::VALID_NIR_KEYS as $nir => $expected) {
+            $this->compute($nir)->shouldReturn($expected);
+        }
     }
 }
