@@ -29,7 +29,7 @@ class NnpValidatorSpec extends ObjectBehavior
 
     public function it_does_not_accept_wrong_length(
         ExecutionContextInterface $context,
-        ConstraintViolationBuilderInterface $constraintViolationBuilder
+        ConstraintViolationBuilderInterface $constraintViolationBuilder,
     ) {
         $nnp = new Nnp();
         $value = '8 2 789 654321890';
@@ -43,7 +43,7 @@ class NnpValidatorSpec extends ObjectBehavior
 
     public function it_does_not_accept_wrong_nnp(
         ExecutionContextInterface $context,
-        ConstraintViolationBuilderInterface $constraintViolationBuilder
+        ConstraintViolationBuilderInterface $constraintViolationBuilder,
     ) {
         $nnp = new Nnp();
         $value = '2 2 789 65432189';
@@ -71,7 +71,7 @@ class NnpValidatorSpec extends ObjectBehavior
 
     public function it_does_not_accept_nnp_with_zero_when_before_2012_is_false(
         ExecutionContextInterface $context,
-        ConstraintViolationBuilderInterface $constraintViolationBuilder
+        ConstraintViolationBuilderInterface $constraintViolationBuilder,
     ) {
         $nnp = new Nnp();
         $nnp->useBefore2012 = false; // Règles post-2012 (comportement par défaut)
