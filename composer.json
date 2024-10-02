@@ -5,14 +5,14 @@
     "license": "MIT",
     "minimum-stability": "stable",
     "require": {
-        "php": "^7.3||^8.0",
+        "php": "^8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "symfony/validator": "^5.4||^6.4|^7.1"
     },
     "require-dev": {
-        "assurance-maladie/qualytou": "^2.0",
-        "phpspec/phpspec": "^7.1",
+        "assurance-maladie/qualytou": "^2.4",
+        "phpspec/phpspec": "^7.5",
         "roave/security-advisories": "dev-latest"
     },
     "config": {
