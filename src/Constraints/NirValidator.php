@@ -83,6 +83,6 @@ class NirValidator extends ConstraintValidator
             return true;
         }
 
-        return ((int) mb_substr($nir, -2)) === $nirKey->compute(mb_substr($nir, 0, 13));
+        return ((int) mb_substr($nir, -2)) === $nirKey->compute($nir);
     }
 }
