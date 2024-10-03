@@ -27,6 +27,8 @@ class NirValidatorSpec extends ObjectBehavior
         $this->validate('2 84 05 88 321 025 32', new Nir());
         $this->validate('2 84 05 2A 321 025 52', new Nir());
         $this->validate('2 84 05 2B 321 025 79', new Nir());
+        $this->validate('2 84 20 2B 321 025 28', new Nir());
+        $this->validate('2 84 99 2B 321 025 31', new Nir());
     }
 
     public function it_does_not_accept_other_length(

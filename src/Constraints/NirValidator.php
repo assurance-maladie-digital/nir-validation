@@ -55,7 +55,7 @@ class NirValidator extends ConstraintValidator
     /**
      * le 1er chiffre (1er composant) permet d'identifier le sexe de l'assuré (1 pour un homme et 2 pour une femme) ;
      * le second composant est un groupe de deux chiffres permettant de distinguer l'année de naissance (exemple 77 pour 1977) ;
-     * le 3ème composant est un groupe de deux chiffres correspondant au mois de naissance (de 01 à 12) ;
+     * le 3ème composant est un groupe de deux chiffres correspondant au mois de naissance (de 01 à 12) mais peut aussi prendre d’autres valeurs (de 20 à 99) qui indiquent que le mois de naissance de l’individu n’est pas connu (cela peut arriver pour des personnes nées à l’étranger) (https://www.insee.fr/fr/information/6665190?sommaire=6665196#titre-bloc-encadre4) ;
      * le 4ème correspond au département de naissance selon le code géographique officiel (de 01 à 95 et 97 pour les DOM et COM 976, 98 pour les TOM et COM et enfin 99 pour les nés hors de France) ;
      * le 5ème est un groupe de 3 chiffres permettant d'identifier la commune de naissance, selon le code géographique officiel édité par l'INSEE (https://www.insee.fr/fr/information/5057840) ;
      * le 6ème est un groupe de 3 chiffres, correspondant au rang d'inscription sur la liste du répertoire régional de l'INSEE ;
@@ -67,7 +67,7 @@ class NirValidator extends ConstraintValidator
             '/\A' .
             '(?<sexe>[12])' .
             '(?<anneeNaissance>\d{2})' .
-            '(?<moisNaissance>1[0-2]|0[1-9])' .
+            '(?<moisNaissance>0[1-9]|1[0-2]|[2-9][0-9])' .
             '(?<departementNaissance>\d{2}|2A|2B)' .
             '(?<communeNaissance>\d{3})' .
             '(?<rangInscription>\d{3})' .
