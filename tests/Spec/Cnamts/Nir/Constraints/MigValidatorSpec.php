@@ -30,7 +30,7 @@ class MigValidatorSpec extends ObjectBehavior
 
     public function it_does_not_accept_wrong_length(
         ExecutionContextInterface $context,
-        ConstraintViolationBuilderInterface $constraintViolationBuilder
+        ConstraintViolationBuilderInterface $constraintViolationBuilder,
     ) {
         $mig = new Mig();
         $value = '5 2 789 654321890';
@@ -44,7 +44,7 @@ class MigValidatorSpec extends ObjectBehavior
 
     public function it_does_not_accept_wrong_mig(
         ExecutionContextInterface $context,
-        ConstraintViolationBuilderInterface $constraintViolationBuilder
+        ConstraintViolationBuilderInterface $constraintViolationBuilder,
     ) {
         $mig = new Mig();
         $value = '2 2 789 65432189';
@@ -59,7 +59,7 @@ class MigValidatorSpec extends ObjectBehavior
     public function it_expects_constraint_compatible_type()
     {
         $this->shouldThrow(UnexpectedTypeException::class)
-            ->during('validate', ['', new class() extends Constraint {}])
+            ->during('validate', ['', new class extends Constraint {}])
         ;
     }
 }

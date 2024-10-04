@@ -25,7 +25,7 @@ jobs:
         with:
           coverage: "none"
           ini-values: date.timezone=Europe/Paris,memory_limit=-1,default_socket_timeout=10,session.gc_probability=0,apc.enable_cli=1
-          php-version: "8.0"
+          php-version: "8.1"  # Défini la version PHP 8.1 minimum
           extensions: "${{ env.extensions }}"
           tools: flex
 
