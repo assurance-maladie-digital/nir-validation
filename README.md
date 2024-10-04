@@ -108,26 +108,25 @@ class User
 
 ### Numéro d'Inscription au Répertoire (NIR)
 
-Le NIR est un numéro à treize caractères dont la composition est précisée dans 
+Le NIR est un numéro à treize caractères dont la composition est définie par 
 l'article 4 du décret n° 82-103 du 22 janvier 1982.
 
 ### Numéro National Provisoire (NNP)
 
-Le NPP est attribué aux personnes nées à l'étranger, qui n'ont jamais 
-été immatriculées.
+Le NNP est attribué aux personnes nées à l'étranger qui n'ont jamais été 
+immatriculées dans le système français. Les NNP ont officiellement disparu au 
+31 décembre 2022.
 
 ### Migrant de passage (MIG)
 
-Afin de créer au Référentiel Individus (RFI) les individus présents en
-Bases de Données Opérantes (BDO) en tant que membre de la famille du migrant 
-de passage, il est nécessaire de leur attribuer un numéro de type Migrant 
-unique nationalement.
+Pour créer dans le Référentiel Individus (RFI) les individus présents dans les 
+Bases de Données Opérantes (BDO) en tant que membres de la famille d'un migrant 
+de passage, il est nécessaire de leur attribuer un numéro de type "Migrant", 
+unique au niveau national.
 
-### NIA
+### Numéro d'Ummatriculation d'Attente (NIA)
 
-L'objectif du NIA est de mettre fin aux numéros provisoires - NNP - 
-créés de manière autonome par les caisses. 
-
-Il s'agit de perfectionner la gestion de l'identification par la mise en place 
-d'un numéro provisoire partageable entre tous les Organismes de la 
-Protection Sociale.
+Le NIA, mis en place en 2016, a pour objectif de remplacer les numéros 
+provisoires (NNP) créés de manière indépendante par les caisses.  
+Il améliore la gestion de l'identification en instaurant un numéro provisoire 
+unique et partagé entre tous les Organismes de Protection Sociale.
