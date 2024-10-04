@@ -39,24 +39,6 @@ if (count($violations) !== 0) {
 Toutes les contraintes ont été intégrées pour pouvoir être utilisées dans
 tous les formats supportés par Symfony :
 
-#### Annotations
-
-```php
-// src/Entity/User.php
-namespace App\Entity;
-
-// ...
-use Cnamts\Nir\Constraints as Assert;
-
-class User
-{
-    /**
-     * @Assert\Nir
-     */
-    private $identifier;
-}
-```
-
 #### Attributs
 
 ```php
