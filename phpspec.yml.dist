@@ -1,5 +1,0 @@
-suites:
-    project_suite:
-        spec_prefix: 'Spec'
-        src_path: 'src'
-        spec_path: 'tests'

@@ -47,6 +47,6 @@ jobs:
         run: |
           composer update --prefer-dist --no-progress $([ '${{ matrix.mode }}' = low-deps ] && echo '--prefer-lowest')
 
-      - name: Run phpspec tests
+      - name: Run PHPUnit tests
         run: |
-          php vendor/bin/phpspec run
+          php vendor/bin/phpunit
