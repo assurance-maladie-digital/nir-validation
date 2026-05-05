@@ -11,7 +11,7 @@
         "symfony/validator": "^5.4||^6.4|^7.1"
     },
     "require-dev": {
-        "assurance-maladie/qualytou": "^2.4",
+        "assurance-maladie/qualytou": "^3.2",
         "phpspec/phpspec": "^7.5",
         "roave/security-advisories": "dev-latest"
     },
